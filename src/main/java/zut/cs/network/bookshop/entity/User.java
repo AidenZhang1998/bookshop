@@ -17,7 +17,7 @@ public class User implements Serializable{
 	private String telephone; // 用户联系电话
 	private String introduce; // 用户介绍
 	private String activeCode; // 激活码
-	private String role; // 用户角色
+	private int role; // 用户角色
 	private int state; // 用户状态
 	private Date registTime;// 注册时间
 
@@ -101,11 +101,11 @@ public class User implements Serializable{
 		this.introduce = introduce;
 	}
 
-	public String getRole() {
+	public int  getRole() {
 		return role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(int role) {
 		this.role = role;
 	}
 
