@@ -56,6 +56,9 @@
             <if test="classification != null">
                 classification = #{classification},
             </if>
+            <if test="count != null">
+                count = #{count},
+            </if>
         </set>
         WHERE id = #{id}
     </update>

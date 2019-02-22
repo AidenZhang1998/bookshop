@@ -36,10 +36,10 @@
                 <!-- 搜索框 -->
                 <el-form :inline="true" :model="searchEntity" class="demo-form-inline">
                     <el-form-item label="分类">
-                        <el-input v-model="searchEntity.brand" placeholder="分类"></el-input>
+                        <el-input v-model="searchEntity.classification" placeholder="分类"></el-input>
                     </el-form-item>
                     <el-form-item label="名称">
-                        <el-input v-model="searchEntity.title" placeholder="名称"></el-input>
+                        <el-input v-model="searchEntity.name" placeholder="名称"></el-input>
                     </el-form-item>
                     <el-form-item>
                         <el-button
@@ -137,6 +137,14 @@
 
                         </template>
                     </el-table-column>
+                    <el-table-column
+                            align="center"
+                            prop="count"
+                            sortable
+                            label="商品数量"
+                            width="260"
+                            show-overflow-tooltip>
+                    </el-table-column>
                 </el-table>
 
                 <!-- 分页 -->
@@ -220,6 +228,11 @@
                 <el-input v-model="editor.classification" placeholder="商品分类"
                           auto-complete="off"></el-input>
             </el-form-item>
+            <el-form-item prop="classification" label="商品数量" class="is-required"
+                          :rules="[{ required: true, message: '商品数量不能为空'}]">
+                <el-input v-model="editor.count" placeholder="商品数量"
+                          auto-complete="off"></el-input>
+            </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
             <el-button @click="showSave = false">取 消</el-button>
@@ -265,6 +278,11 @@
             <el-form-item prop="classification" label="商品分类" class="is-required"
                           :rules="[{ required: true, message: '商品分类不能为空'}]">
                 <el-input v-model="editor.classification" placeholder="商品分类"
+                          auto-complete="off"></el-input>
+            </el-form-item>
+            <el-form-item prop="count" label="商品数量" class="is-required"
+                          :rules="[{ required: true, message: '商品数量不能为空'}]">
+                <el-input v-model="editor.count" placeholder="商品数量"
                           auto-complete="off"></el-input>
             </el-form-item>
         </el-form>

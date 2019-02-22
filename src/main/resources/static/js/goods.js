@@ -16,7 +16,8 @@ var vm = new Vue({
                 name: '',
                 price: '',
                 image: '',
-                classification: ''
+                classification: '',
+                count: ''
             }],
 
             //编辑表
@@ -24,7 +25,8 @@ var vm = new Vue({
             	name: '',
                 price: '',
                 image: '',
-                classification: ''
+                classification: '',
+                count: ''
             },
             //添加dialog
             showSave: false,
