@@ -6,10 +6,11 @@
 
     <resultMap id="baseMap" type="zut.cs.network.bookshop.entity.Goods">
         <id property="id" column="id" jdbcType="INTEGER"/>
-        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="price" column="price" jdbcType="VARCHAR"/>
         <result property="image" column="image" jdbcType="VARCHAR"/>
-        <result property="brand" column="brand" jdbcType="VARCHAR"/>
+        <result property="classification" column="classification" jdbcType="VARCHAR"/>
+        <result property="count" column="count" jdbcType="INTEGER"/>
     </resultMap>
 
     <!-- 查询所有 -->
@@ -20,11 +21,11 @@
     <!-- 条件查询 -->
     <select id="findByPage" parameterType="zut.cs.network.bookshop.entity.Goods" resultMap="baseMap">
         SELECT * FROM products WHERE 1=1
-        <if test="brand != null">
-            AND brand LIKE CONCAT('%', #{brand}, '%')
+        <if test="classification != null">
+            AND classification LIKE CONCAT('%', #{classification}, '%')
         </if>
-        <if test="title != null">
-            AND title LIKE CONCAT('%', #{title}, '%')
+        <if test="name != null">
+            AND name LIKE CONCAT('%', #{name}, '%')
         </if>
     </select>
 
@@ -35,16 +36,16 @@
 
     <!-- 添加数据 -->
     <insert id="create" parameterType="zut.cs.network.bookshop.entity.Goods">
-        INSERT INTO products(title, price, image, brand)
-        VALUES(#{title}, #{price}, #{image}, #{brand})
+        INSERT INTO products(name, price, image, classification,count)
+        VALUES(#{name}, #{price}, #{image}, #{classification},#{count})
     </insert>
 
     <!-- 更新数据 -->
     <update id="update" parameterType="zut.cs.network.bookshop.entity.Goods">
         UPDATE products
         <set>
-            <if test="title != null">
-                title = #{title},
+            <if test="name != null">
+                name = #{name},
             </if>
             <if test="price != null">
                 price = #{price},
@@ -52,8 +53,8 @@
             <if test="image != null">
                 image = #{image},
             </if>
-            <if test="brand != null">
-                brand = #{brand},
+            <if test="classification != null">
+                classification = #{classification},
             </if>
         </set>
         WHERE id = #{id}

@@ -13,18 +13,18 @@ var vm = new Vue({
             //element-ui的table需要的参数必须是Array类型的
             goods: [{
                 id: '',
-                title: '',
+                name: '',
                 price: '',
                 image: '',
-                brand: ''
+                classification: ''
             }],
 
             //编辑表
             editor: {
-                title: '',
+            	name: '',
                 price: '',
                 image: '',
-                brand: ''
+                classification: ''
             },
             //添加dialog
             showSave: false,
@@ -143,7 +143,7 @@ var vm = new Vue({
         },
         //删除
         sureDelete(ids) {
-            this.$confirm('你确定永久删除此用户信息？', '提示', {
+            this.$confirm('你确定永久删除此商品信息？', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 type: 'warning',
