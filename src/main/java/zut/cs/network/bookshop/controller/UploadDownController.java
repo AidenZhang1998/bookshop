@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * 封装了文件上传和下载的控制层
+ * 文件上传和下载的控制器
  *
  */
 @RestController

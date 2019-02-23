@@ -4,9 +4,15 @@ import java.util.List;
 
 
 
+
 import org.apache.ibatis.annotations.Mapper;
 
 import zut.cs.network.bookshop.entity.User;
+
+/**
+ * 对用户的操作
+ *
+ */
 @Mapper
 public interface UserDao {
 	List<User> AllUser();

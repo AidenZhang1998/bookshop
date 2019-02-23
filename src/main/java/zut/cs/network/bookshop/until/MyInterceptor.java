@@ -14,7 +14,7 @@ import zut.cs.network.bookshop.entity.User;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 自定义拦截器，实现简单的登录拦截
+ * 简单的登录拦截器
  *
  */
 @Component

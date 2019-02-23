@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 
+ * 分页表
  */
 public class PageBean implements Serializable {
 

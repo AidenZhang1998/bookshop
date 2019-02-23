@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
 /**
-
+对商品的操作
  */
 @Mapper
 public interface GoodsDao {

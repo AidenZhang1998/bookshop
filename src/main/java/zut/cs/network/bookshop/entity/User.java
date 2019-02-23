@@ -2,12 +2,12 @@ package zut.cs.network.bookshop.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-
+/**
+ * 普通用户
+ */
 public class User implements Serializable{
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private int id; // 用户编号
 	private String username; // 用户姓名

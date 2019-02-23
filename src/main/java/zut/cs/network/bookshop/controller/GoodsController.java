@@ -15,7 +15,7 @@ import zut.cs.network.bookshop.service.GoodsService;
 import java.util.List;
 
 /**
-
+商品操作控制器
  */
 @RestController
 @RequestMapping("/goods")

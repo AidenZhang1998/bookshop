@@ -10,6 +10,10 @@ import zut.cs.network.bookshop.service.UserService;
 
 
 
+/**
+ * 用户的业务操作实现
+ *
+ */
 @Service
 public class UserServiceImpl implements UserService {
 

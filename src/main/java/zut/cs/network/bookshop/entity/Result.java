@@ -2,7 +2,10 @@ package zut.cs.network.bookshop.entity;
 
 import java.io.Serializable;
 
-
+/**
+ * 结果
+ *
+ */
 public class Result implements Serializable {
 
     //判断结果

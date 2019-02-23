@@ -15,6 +15,11 @@ import zut.cs.network.bookshop.entity.Result;
 import zut.cs.network.bookshop.entity.User;
 import zut.cs.network.bookshop.service.UserService;
 
+/**
+ * 登录控制器
+ *
+ */
+
 @Controller
 public class LoginController {
   @Autowired

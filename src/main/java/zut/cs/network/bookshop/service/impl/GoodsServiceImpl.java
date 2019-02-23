@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- *
+ *商品业务的操作实现
  */
 @Service
 public class GoodsServiceImpl implements GoodsService {
