@@ -37,4 +37,10 @@ public class LoginController {
   public String login() {
       return "home/login";
   }
+  @RequestMapping("/logout")
+  public String logout() {
+      ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+      attributes.getRequest().getSession().removeAttribute("user");
+      return "home/login";
+  }
 }
