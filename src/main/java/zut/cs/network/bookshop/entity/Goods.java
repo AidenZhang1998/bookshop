@@ -11,7 +11,7 @@ public class Goods implements Serializable {
 	private Long id; //商品编号
     private String name; //商品标题
     private String price; //商品价格
-    private String image; //商品图片
+    private String image; //商品图片 
     private String classification; //商品分类
     private int count;//商品数量
 	public Long getId() {
