@@ -10,7 +10,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import zut.cs.network.bookshop.entity.Admin;
-import zut.cs.network.bookshop.entity.User;
+import zut.cs.network.bookshop.entity.Message;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="zut.cs.network.bookshop.dao.MessageDao">
+   <resultMap type="zut.cs.network.bookshop.entity.Message" id="MessageResult">
+    <id column="ID" jdbcType="INTEGER" property="id"/>
+    <result column="USERNAME" jdbcType="VARCHAR" property="username"/>
+    <result column="NAME" jdbcType="VARCHAR" property="name"/>
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
+    <result column="SEX" jdbcType="VARCHAR" property="sex"/>
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address"/>
+  </resultMap>
+     <!-- 查询所有 -->
+    <select id="AllUser" resultType="zut.cs.network.bookshop.entity.Message">
+        SELECT * FROM message
+    </select>
+    <!-- 根据用户名查找用户信息 -->
+    <select id="FindByName" resultType="zut.cs.network.bookshop.entity.Message" parameterType="String">
+        SELECT * FROM message WHERE name = #{name}
+    </select>
+    
+    <!-- 删除 -->
+    <delete id="DeleteUser" parameterType="int">
+        DELETE FROM message WHERE id = #{id}
+    </delete>
+</mapper>

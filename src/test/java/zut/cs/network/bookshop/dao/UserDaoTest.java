@@ -13,39 +13,26 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 
-import zut.cs.network.bookshop.entity.User;
+import zut.cs.network.bookshop.entity.Message;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserDaoTest {
 
 	
     @Autowired
-    UserDao userDao;
-	@Test
-	public void testAddUser() {
-		User user=new User();
-		user.setUsername("test");
-		user.setEmail("184@qq.com");
-		user.setIntroduce("学生");
-		user.setActiveCode("1234");
-		user.setGender("男");
-		user.setPassword("test");
-		user.setTelephone("123456789");
-		System.out.println(user.toString());
-		userDao.AddUser(user);
-	}
+    MessageDao messageDao;
 	@Test
 	public void testAllUser() {
-		List<User> users;	
-		users=userDao.AllUser();
+		List<Message> users;	
+		users=messageDao.AllUser();
 		for(int i=0;i<users.size();i++)
 		{
 		System.out.println(users.get(i).toString());
 		}
 	}
 	@Test
-    public void testDeleteUser() {
-		userDao.DeleteUser(1);
-		System.out.println(userDao.FindByName("test").toString());
+    public void testDeleteUser() {	
+		System.out.println(messageDao.FindByName("1").toString());
+		messageDao.DeleteUser(1);
 	}
 }
