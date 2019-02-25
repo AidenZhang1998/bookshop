@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import zut.cs.network.bookshop.entity.Admin;
 import zut.cs.network.bookshop.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,8 +33,8 @@ public class MyInterceptor {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
 //        request.getSession().setAttribute("user", new User()); //测试，手动添加用户登录的session
-        User user = (User) request.getSession().getAttribute("user");
-        if (user == null) {
+        Admin admin = (Admin) request.getSession().getAttribute("admin");
+        if (admin == null) {
             System.out.println("-----------用户未登录-----------");
             attributes.getResponse().sendRedirect("/login"); //手动转发到/login映射路径
         }

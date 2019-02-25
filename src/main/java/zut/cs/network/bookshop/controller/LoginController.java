@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import zut.cs.network.bookshop.entity.Admin;
 import zut.cs.network.bookshop.entity.Result;
-import zut.cs.network.bookshop.entity.User;
-import zut.cs.network.bookshop.service.UserService;
+import zut.cs.network.bookshop.service.AdminService;
+
 
 /**
  * 登录控制器
@@ -23,17 +24,17 @@ import zut.cs.network.bookshop.service.UserService;
 @Controller
 public class LoginController {
   @Autowired
-  private UserService userService;
+  private AdminService adminService;
   @RequestMapping("/login")
   @ResponseBody
   public Result login(@RequestParam("username") String username, @RequestParam("password") String password) {
       System.out.println("username:" + username + ", password:" + password);
-      User user = userService.FindByName(username);
-      if (user != null) {
-          if (user.getPassword().equals(password)) {
+      Admin admin = adminService.FindByName(username);
+      if (admin != null) {
+          if (admin.getPassword().equals(password)) {
               ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-              attributes.getRequest().getSession().setAttribute("user", user); //将登陆用户信息存入到session域对象中
-              return new Result(true, user.getUsername());
+              attributes.getRequest().getSession().setAttribute("admin", admin); //将登陆用户信息存入到session域对象中
+              return new Result(true, admin.getName());
           }
       }
       return new Result(false, "登录失败");
@@ -45,7 +46,7 @@ public class LoginController {
   @RequestMapping("/logout")
   public String logout() {
       ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-      attributes.getRequest().getSession().removeAttribute("user");
+      attributes.getRequest().getSession().removeAttribute("admin");
       return "home/login";
   }
 }
