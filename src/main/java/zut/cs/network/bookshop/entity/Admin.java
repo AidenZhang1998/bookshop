@@ -8,13 +8,13 @@ public class Admin implements Serializable{
 
 
 	private static final long serialVersionUID = 1L;
-	private String name;//用户名
+	private String username;//用户名
     private String password;//密码
 	public String getName() {
-		return name;
+		return username;
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.username = name;
 	}
 	public String getPassword() {
 		return password;

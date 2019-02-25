@@ -12,7 +12,6 @@ public class HomeController {
     /**
      * 系统首页
      *
-     * @return
      */
     @GetMapping(value = {"/", "/index"})
     public String index() {
@@ -21,8 +20,6 @@ public class HomeController {
 
     /**
      * 商品列表页
-     *
-     * @return
      */
     @GetMapping(value = {"/goods"})
     public String user() {

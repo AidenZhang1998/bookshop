@@ -25,7 +25,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public List<Goods> findAll() {
-        return null;
+        return goodsDao.findAll();
     }
 
     @Override
@@ -52,11 +52,6 @@ public class GoodsServiceImpl implements GoodsService {
 
     /**
      * 分页查询-条件查询方法
-     *
-     * @param goods    查询条件
-     * @param pageCode 当前页
-     * @param pageSize 每页的记录数
-     * @return
      */
     public PageBean findByPage(Goods goods, int pageCode, int pageSize) {
         //使用Mybatis分页插件

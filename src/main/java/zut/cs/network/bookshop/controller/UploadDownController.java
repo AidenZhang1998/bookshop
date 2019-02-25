@@ -23,9 +23,6 @@ public class UploadDownController {
 
     /**
      * 文件上传
-     * @param picture
-     * @param request
-     * @return
      */
     @RequestMapping("/upload")
     public Result upload(@RequestParam("picture") MultipartFile picture, HttpServletRequest request) {

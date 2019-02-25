@@ -25,12 +25,7 @@ public class GoodsController {
     private GoodsService goodsService;
 
     /**
-     * 分页查询
-     *
-     * @param goods    查询条件
-     * @param pageCode 当前页
-     * @param pageSize 每页显示的记录数
-     * @return
+     * 分页查询     
      */
     @RequestMapping("/findByConPage")
     public PageBean findByConPage(Goods goods,
@@ -41,9 +36,6 @@ public class GoodsController {
 
     /**
      * 新增商品
-     *
-     * @param goods
-     * @return
      */
     @RequestMapping("/create")
     public Result create(@RequestBody Goods goods) {
@@ -58,9 +50,6 @@ public class GoodsController {
 
     /**
      * 更新数据成功
-     *
-     * @param goods
-     * @return
      */
     @RequestMapping("/update")
     public Result update(@RequestBody Goods goods) {
@@ -75,9 +64,6 @@ public class GoodsController {
 
     /**
      * 批量删除数据
-     *
-     * @param ids
-     * @return
      */
     @RequestMapping("/delete")
     public Result delete(@RequestBody Long... ids) {
@@ -92,9 +78,6 @@ public class GoodsController {
 
     /**
      * 根据id查询
-     *
-     * @param id
-     * @return
      */
     @RequestMapping("/findById")
     public List<Goods> findById(@RequestParam(value = "id", required = false) Long id) {
