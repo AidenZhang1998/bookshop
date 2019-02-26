@@ -21,10 +21,10 @@
     <!-- 条件查询 -->
     <select id="findByPage" parameterType="zut.cs.network.bookshop.entity.Goods" resultMap="baseMap">
         SELECT * FROM products WHERE 1=1
-        <if test="classification != null">
+        <if test="classification != null and !&quot;&quot;.equals(classification.trim())">
             AND classification LIKE CONCAT('%', #{classification}, '%')
         </if>
-        <if test="name != null">
+        <if test="name != null and !&quot;&quot;.equals(name.trim())">
             AND name LIKE CONCAT('%', #{name}, '%')
         </if>
     </select>
@@ -44,19 +44,19 @@
     <update id="update" parameterType="zut.cs.network.bookshop.entity.Goods">
         UPDATE products
         <set>
-            <if test="name != null">
+            <if test="name != null !&quot;&quot;.equals(name.trim())">
                 name = #{name},
             </if>
-            <if test="price != null">
+            <if test="price != null !&quot;&quot;.equals(price.trim())">
                 price = #{price},
             </if>
-            <if test="image != null">
+            <if test="image != null !&quot;&quot;.equals(image.trim())">
                 image = #{image},
             </if>
-            <if test="classification != null">
+            <if test="classification != null !&quot;&quot;.equals(classification.trim())">
                 classification = #{classification},
             </if>
-            <if test="count != null">
+            <if test="count != null !&quot;&quot;.equals(count.trim())">
                 count = #{count},
             </if>
         </set>

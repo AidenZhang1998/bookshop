@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{../../lib/element-ui/lib/theme-chalk/index.css}"/>
+    <link rel="stylesheet" th:href="@{../../lib/font/css/font-awesome.min.css}"/>
+    <link rel="stylesheet" th:href="@{../../css/users.css}"/>
+    <link rel="stylesheet" th:href="@{../../css/public.css}"/>
+</head>
+<body>
+<div id="app">
+    <!-- header -->
+    <el-menu mode="horizontal" :default-active="activeIndex">
+        <el-menu-item index="0" id="logo">商城管理后台</el-menu-item>
+        <el-menu-item index="1"><a href="/index">首页</a></el-menu-item>
+        <el-menu-item index="2"><a href="/goods">商品管理</a></el-menu-item>
+        <el-menu-item index="3"><a href="/users">用户管理</a></el-menu-item>
+        <el-menu-item id="author" index="4">
+            <img class="el-tooltip" src="https://raw.githubusercontent.com/LetMe666/LetMe666.github.io/master/images/header.jpg?token=AsCdDDEcczzGBhxr4RMr6oV3UV9P0n5tks5ceP9-wA%3D%3D"/>
+            <el-dropdown>
+                <span class="el-dropdown-link">管理员<i class="el-icon-arrow-down el-icon--right"></i></span>
+                <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item>首页</el-dropdown-item>
+                    <el-dropdown-item><a href="https://github.com/LetMe666/bookshop" target="_blank">GitHub</a>
+                    </el-dropdown-item>
+                    <el-dropdown-item><a href="https://letmec.me/" target="_blank">Blog</a></el-dropdown-item>
+                    <el-dropdown-item divided><a href="/logout">退出</a></el-dropdown-item>
+                </el-dropdown-menu>
+            </el-dropdown>
+        </el-menu-item>
+    </el-menu>
+
+    <div id="main">
+        <el-col>
+            <el-card shadow="hover">
+                <!-- 搜索框 -->
+                <el-form :inline="true" :model="searchEntity" class="demo-form-inline">
+                    <el-form-item label="昵称">
+                        <el-input v-model="searchEntity.name" placeholder="昵称"></el-input>
+                    </el-form-item>
+                    <el-form-item label="住址">
+                        <el-input v-model="searchEntity.address" placeholder="住址"></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                        <el-button
+                                type="primary"
+                                icon="el-icon-search"
+                                @click="reloadList">查询
+                        </el-button>
+                        <el-button
+                                icon="el-icon-delete"
+                                @click="searchEntity={}"
+                                type="primary" plain>清空
+                        </el-button>
+
+                        <el-button icon="el-icon-refresh"
+                                   @click="search(pageConf.pageCode,pageConf.pageSize)">刷新列表
+                        </el-button>
+                        
+                    </el-form-item>
+                </el-form>
+                
+                
+                <!-- 列表 -->
+                <el-table
+                        ref="users"
+                        :data="users"
+                        border
+                        tooltip-effect="dark"
+                        style="width: 100%"
+                        @selection-change="selectChange">
+
+                    <el-table-column
+                            prop="id"
+                            align="center"
+                            sortable
+                            fixed
+                            label="用户ID"
+                            width="200">
+                    </el-table-column>
+                    <el-table-column
+                            align="center"
+                            prop="name"
+                            label="用户昵称"
+                            width="200">
+                    </el-table-column>
+                    <el-table-column
+                            align="center"
+                            prop="username"
+                            label="用户账号"
+                            width="290">
+                    </el-table-column>
+                    <el-table-column
+                            align="center"
+                            prop="sex"
+                            sortable
+                            label="用户性别"
+                            width="120">
+                    </el-table-column>
+                    <el-table-column
+                            align="center"
+                            prop="address"
+                            label="用户地址"
+                            width="320">
+                    </el-table-column>
+                    <el-table-column
+                            align="center"
+                            prop="email"
+                            label="用户邮箱"
+                            width="250">
+                    </el-table-column>
+                </el-table>
+
+                <!-- 分页 -->
+                <div class="pagination">
+                    <el-pagination
+                            background
+                            @size-change="handleSizeChange"
+                            @current-change="handleCurrentChange"
+                            :current-page="pageConf.pageCode"
+                            :page-sizes="pageConf.pageOption"
+                            :page-size="pageConf.pageSize"
+                            layout="total, sizes, prev, pager, next, jumper"
+                            :total="pageConf.totalPage">
+                    </el-pagination>
+                </div>
+                <br/>
+                <br/>
+            </el-card>
+        </el-col>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+        <el-container>
+            <el-footer>
+                <el-row :gutter="20">
+                    <el-col :span="8" :offset="10">
+                        <div class="footer-inner">
+                            <div class="copyright">&copy; 2019-2-10 &mdash; <span itemprop="copyrightYear">now</span>
+                                <span class="with-love">
+                                    <i class="fa fa-heartbeat"></i>
+                                </span>
+                                <span class="author" itemprop="copyrightHolder">zut.cs.network</span>
+                            </div>
+                            <label>后台业务逻辑用Spring Boot和mybatis实现。页面使用Vue和ElementUI制作</label>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-footer>
+        </el-container>
+    </div>
+
+</div>
+</body>
+<script type="text/javascript" th:src="@{../../lib/vue/vue.js}"></script>
+<script type="text/javascript" th:src="@{../../lib/element-ui/lib/index.js}"></script>
+<script type="text/javascript" th:src="@{../../lib/vue/vue-resource.js}"></script>
+<script type="text/javascript" th:src="@{../../lib/vue/vuex.min.js}"></script>
+<script type="text/javascript" th:src="@{../../js/users.js}"></script>
+</html>

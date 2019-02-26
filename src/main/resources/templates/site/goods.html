@@ -15,7 +15,8 @@
         <el-menu-item index="0" id="logo">商城管理后台</el-menu-item>
         <el-menu-item index="1"><a href="/index">首页</a></el-menu-item>
         <el-menu-item index="2"><a href="/goods">商品管理</a></el-menu-item>
-        <el-menu-item id="author" index="3">
+        <el-menu-item index="3"><a href="/users">用户管理</a></el-menu-item>
+        <el-menu-item id="author" index="4">
             <img class="el-tooltip" src="https://raw.githubusercontent.com/LetMe666/LetMe666.github.io/master/images/header.jpg?token=AsCdDDEcczzGBhxr4RMr6oV3UV9P0n5tks5ceP9-wA%3D%3D"/>
             <el-dropdown>
                 <span class="el-dropdown-link">管理员<i class="el-icon-arrow-down el-icon--right"></i></span>
@@ -113,10 +114,8 @@
                     <el-table-column
                             align="center"
                             prop="name"
-                            sortable
                             label="商品名称"
-                            width="260"
-                            show-overflow-tooltip>
+                            width="260">
                     </el-table-column>
                     <el-table-column align="center" label="商品图片" width="240">
                         <template scope="scope">

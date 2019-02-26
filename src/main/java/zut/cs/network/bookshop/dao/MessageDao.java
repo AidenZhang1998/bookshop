@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.github.pagehelper.Page;
+
 import zut.cs.network.bookshop.entity.Message;
 
 /**
@@ -16,6 +18,6 @@ import zut.cs.network.bookshop.entity.Message;
 @Mapper
 public interface MessageDao {
 	List<Message> AllUser();
-	void DeleteUser(int id);
-	Message FindByName(String name);
+	void DeleteUser(Long ids);
+	Page<Message> findByPage(Message message);
 }

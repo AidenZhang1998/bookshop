@@ -3,24 +3,35 @@
 
 <mapper namespace="zut.cs.network.bookshop.dao.MessageDao">
    <resultMap type="zut.cs.network.bookshop.entity.Message" id="MessageResult">
-    <id column="ID" jdbcType="INTEGER" property="id"/>
-    <result column="USERNAME" jdbcType="VARCHAR" property="username"/>
-    <result column="NAME" jdbcType="VARCHAR" property="name"/>
-    <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
-    <result column="SEX" jdbcType="VARCHAR" property="sex"/>
-    <result column="ADDRESS" jdbcType="VARCHAR" property="address"/>
+    <id column="id" jdbcType="INTEGER" property="id"/>
+    <result column="sex" jdbcType="VARCHAR" property="sex"/>
+    <result column="username" jdbcType="VARCHAR" property="username"/>
+    <result column="name" jdbcType="VARCHAR" property="name"/>
+    <result column="email" jdbcType="VARCHAR" property="email"/>
+    <result column="address" jdbcType="VARCHAR" property="address"/>
   </resultMap>
+  
      <!-- 查询所有 -->
     <select id="AllUser" resultType="zut.cs.network.bookshop.entity.Message">
         SELECT * FROM message
     </select>
-    <!-- 根据用户名查找用户信息 -->
-    <select id="FindByName" resultType="zut.cs.network.bookshop.entity.Message" parameterType="String">
-        SELECT * FROM message WHERE name = #{name}
+    
+    <!-- 条件查询 -->
+    <select id="findByPage" parameterType="zut.cs.network.bookshop.entity.Message" resultMap="MessageResult">
+        SELECT * FROM message WHERE 1=1
+        <if test="name != null and !&quot;&quot;.equals(name.trim())">
+            AND name LIKE CONCAT('%', #{name}, '%')
+        </if>
+         <if test="address != null and !&quot;&quot;.equals(address.trim())">
+            AND address LIKE CONCAT('%', #{address}, '%')
+        </if>      
     </select>
+  
+  
+    
     
     <!-- 删除 -->
-    <delete id="DeleteUser" parameterType="int">
+    <delete id="DeleteUser" parameterType="long">
         DELETE FROM message WHERE id = #{id}
     </delete>
 </mapper>

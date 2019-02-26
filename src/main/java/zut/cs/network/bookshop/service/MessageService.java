@@ -1,9 +1,10 @@
 package zut.cs.network.bookshop.service;
 
 
-import java.util.List;
+
 
 import zut.cs.network.bookshop.entity.Message;
+import zut.cs.network.bookshop.entity.PageBean;
 
 
 
@@ -11,10 +12,11 @@ import zut.cs.network.bookshop.entity.Message;
  * 用户的业务逻辑操作
  *
  */
-public interface MessageService {
+public interface MessageService extends BaseService<Message>{
 
-	Message FindByName(String name);
-	List<Message> AllUser();
-	void DeleteUser(int id);
+	 /**
+     * 分页查询
+     */
+    PageBean findByPage(Message message, int pageCode, int pageSize);
 	
 }
